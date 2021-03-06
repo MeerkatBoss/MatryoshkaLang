@@ -1,5 +1,5 @@
 #pragma once
-enum TokenType {
+enum class TokenType {
 	//single symbol tokens
 	EXLAMATION, QUOTE, NUM_OF, SEMICOLON,
 	MODULO, COLON, QUESTION, STAR,
@@ -14,7 +14,8 @@ enum TokenType {
 	EQUAL, GREATER, GREATER_EQUAL,
 	NOT_EQUAL, LESS, LESS_EQUAL,
 	IF, ELSE, WHILE, FOR, TRUE, FALSE,
-	VAR, FUN, RETURN, 
+	VAR, FUN, RETURN,
+	INT, DOUBLE, STRING, BOOL,
 
-	EOF
+	FILE_END
 };

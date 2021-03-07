@@ -1,13 +1,14 @@
 #pragma once
 enum class TokenType {
-	//single symbol tokens
+	//single character tokens
 	EXLAMATION, QUOTE, NUM_OF, SEMICOLON,
 	MODULO, COLON, QUESTION, STAR,
 	MINUS, PLUS, SLASH, ASSIGN,
 	LEFT_PAREN, RIGHT_PAREN,
+	POINT, COMMA,
 
 	//literals
-	IDENTIFIER, INTEGER, FRACTION, STRING,
+	IDENTIFIER, INT, DOUBLE, STRING,
 
 	//keywords
 	NOT, AND, OR, XOR, BEGIN, END,
@@ -15,7 +16,7 @@ enum class TokenType {
 	NOT_EQUAL, LESS, LESS_EQUAL,
 	IF, ELSE, WHILE, FOR, TRUE, FALSE,
 	VAR, FUN, RETURN,
-	INT, DOUBLE, STRING, BOOL,
+	INT_VAR, DOUBLE_VAR, STRING_VAR, BOOL_VAR,
 
 	FILE_END
 };

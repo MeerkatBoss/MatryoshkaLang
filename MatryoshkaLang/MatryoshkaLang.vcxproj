@@ -147,6 +147,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="input.txt" />
+    <Text Include="log.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ErrorHandlers.h" />

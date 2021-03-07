@@ -1,0 +1,4 @@
+﻿  MatryoshkaLang.cpp
+C:\Users\ivans\source\repos\MeerkatBoss\MatryoshkaLang\MatryoshkaLang\Lexer.h(41,18): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\ivans\source\repos\MeerkatBoss\MatryoshkaLang\MatryoshkaLang\Lexer.h(115,19): warning C4018: '>=': signed/unsigned mismatch
+  MatryoshkaLang.vcxproj -> C:\Users\ivans\source\repos\MeerkatBoss\MatryoshkaLang\Debug\MatryoshkaLang.exe

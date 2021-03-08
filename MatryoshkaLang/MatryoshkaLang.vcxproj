@@ -152,6 +152,7 @@
   <ItemGroup>
     <ClInclude Include="ErrorHandlers.h" />
     <ClInclude Include="Lexer.h" />
+    <ClInclude Include="Logger.h" />
     <ClInclude Include="Token.h" />
     <ClInclude Include="TokenType.h" />
   </ItemGroup>

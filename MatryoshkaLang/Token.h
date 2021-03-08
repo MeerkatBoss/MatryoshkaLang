@@ -1,15 +1,15 @@
 #pragma once
 #include "TokenType.h"
 #include <string>
-#include <variant>
+#include <any>
 class Token
 {
 public:
 	TokenType type;
 	std::string lexeme;
-	std::variant<int, double, std::string> stored;
+	std::any stored;
 	int line;
-	Token(TokenType type, std::string lexeme, std::variant<int, double, std::string> stored, int line)
+	Token(TokenType type, std::string lexeme, std::any stored, int line)
 	{
 		this->type = type;
 		this->lexeme = lexeme;

@@ -2,6 +2,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include "Logger.h"
 class ErrorHandler
 {
 public:
@@ -27,14 +28,18 @@ public:
 	}
 };
 
-class LogErrorHandler : public ErrorHandler	//TODO: figure out the way to clear file on new run
+class LogErrorHandler : public ErrorHandler
 {
 public:
+	LogErrorHandler(Logger* logger)
+	{
+		this->logger = logger;
+	}
 	void reportError(int line, std::string message) override
 	{
 		__super::reportError(line, message);
-		std::ofstream fout("log.txt", std::ios_base::app);
-		fout << "Ошибка на строке " << line << ": " << message << std::endl;
-		fout.close();
+		logger->log("\tОшибка на строке " + std::to_string(line) + ": " + message);
 	}
+private:
+	Logger* logger;
 };

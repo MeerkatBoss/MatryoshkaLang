@@ -5,7 +5,7 @@
 #include <vector>
 #include <string>
 #include <map>
-#include <variant>
+#include <any>
 class Lexer
 {
 public:
@@ -45,13 +45,16 @@ private:
 		char c = advance();
 		switch (c)
 		{
+			//insignificant symbols
 		case ' ':
 		case '\r':
 		case '\t':
 			break;
+			//new line
 		case '\n':
 			line++;
 			break;
+			//single symbol tokens
 		case '!': addToken(TokenType::EXLAMATION); break;
 		case '¹': addToken(TokenType::NUM_OF); break;
 		case ';': addToken(TokenType::SEMICOLON); break;
@@ -66,10 +69,11 @@ private:
 		case ')': addToken(TokenType::RIGHT_PAREN); break;
 		case '.': addToken(TokenType::POINT); break;
 		case ',': addToken(TokenType::COMMA); break;
+			//SLASH and commentary have same beginning
 		case '/':
-			if (advanceIf('/'))
+			if (advanceIf('/'))	//commentaries last until end of line
 			{
-				while (checkNext() != '\n' && !isAtEnd()) advance();
+				while (checkNext() != '\n' && !isAtEnd()) advance();	//new line not consumed, it's needed to update line counter
 			}
 			else
 			{
@@ -80,11 +84,11 @@ private:
 			addStringValue();
 			break;
 		default:
-			if (isNumeric(c))
+			if (isNumeric(c))	//number
 			{
 				addNumericValue();
 			}
-			else if (isAlphabetic(c))
+			else if (isAlphabetic(c))	//identifier or keyword
 			{
 				addIdentifier();
 			}
@@ -119,7 +123,7 @@ private:
 	{
 		addToken(type, NULL);
 	}
-	void addToken(TokenType type, std::variant<int, double, std::string> stored)	//Adds token with value
+	void addToken(TokenType type, std::any stored)	//Adds token with value
 	{
 		std::string text = source.substr(start, current - start);
 		tokens.push_back(Token(type, text, stored, line));
@@ -190,7 +194,7 @@ private:
 		std::string word = source.substr(start, current - start);
 		auto typePtr = keywords.find(word);
 		TokenType type;
-		if (typePtr == keywords.end())
+		if (typePtr == keywords.end())	//check on being keyword
 			type = TokenType::IDENTIFIER;
 		else
 			type = typePtr->second;
